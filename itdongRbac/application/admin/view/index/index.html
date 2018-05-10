@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="__ROOT__/static/css/itdong-flex.css?ver=<?php echo time();?>">
 </head>
 <body>
-<style type="text/css">
+	<style type="text/css">
 	.bg-ff0000{
 		background: #ff0000;
 	}
@@ -16,75 +16,68 @@
 	}
 </style>
 <div class="itdong-flex-container
-	itdong-flex-direction-row
-	itdong-justify-content-flex-start
-	itdong-align-items-flex-start
-	itdong-flex-wrap-nowrap
-	itdong-align-content-stretch">
-	<div class="itdong-flex-item-100 itdong-align-self-stretch itdong-flex-1" style="overflow-y: scroll;">
-		<ol class="ui list">
-		  <li>注册</li>
-		  <li>用户福利</li>
-		  <li>用户类型 <ol>
-		      <li>管理员</li>
-		      <li>高级用户</li>
-		      <li>普通用户</li>
-		    </ol>
-		  </li>
-		  <li>删除您的用户</li>
-		</ol>
-		<ol class="ui list">
-		  <li>注册</li>
-		  <li>用户福利</li>
-		  <li>用户类型 <ol>
-		      <li>管理员</li>
-		      <li>高级用户</li>
-		      <li>普通用户</li>
-		    </ol>
-		  </li>
-		  <li>删除您的用户</li>
-		</ol>
-		<ol class="ui list">
-		  <li>注册</li>
-		  <li>用户福利</li>
-		  <li>用户类型 <ol>
-		      <li>管理员</li>
-		      <li>高级用户</li>
-		      <li>普通用户</li>
-		    </ol>
-		  </li>
-		  <li>删除您的用户</li>
-		</ol>
-		<ol class="ui list">
-		  <li>注册</li>
-		  <li>用户福利</li>
-		  <li>用户类型 <ol>
-		      <li>管理员</li>
-		      <li>高级用户</li>
-		      <li>普通用户</li>
-		    </ol>
-		  </li>
-		  <li>删除您的用户</li>
-		</ol>
-		<ol class="ui list">
-		  <li>注册</li>
-		  <li>用户福利</li>
-		  <li>用户类型 <ol>
-		      <li>管理员</li>
-		      <li>高级用户</li>
-		      <li>普通用户</li>
-		    </ol>
-		  </li>
-		  <li>删除您的用户</li>
-		</ol>
+itdong-flex-direction-row
+itdong-justify-content-flex-start
+itdong-align-items-flex-start
+itdong-flex-wrap-nowrap
+itdong-align-content-stretch">
+<div class="itdong-flex-item-100 itdong-align-self-stretch itdong-flex-1" style="overflow-y: scroll;">
+	<div class="ui vertical styled accordion menu">
+		{foreach name="menu" item="vo"}
+		{if condition="isset($vo['children'])"}
+		<div class="title"><i class="dropdown icon"></i>{$vo.title}</div>
+		<div class="content">
+
+			<div class="ui list">
+				{foreach name="$vo['children']" item="v"}
+					<a class="item" data-href="{$v.name}"><i class="circle outline icon"></i>{$v.title}</a>
+				{/foreach}
+			</div>
+
+		</div>
+		{else /}
+			<div class="title"><i class="folder outline icon"></i>{$vo.title}</div>
+			<div class="content">
+				<div class="ui list">
+					<a class="item"><i class="circle outline icon"></i>{$vo.title}</a>
+				</div>
+			</div>
+		{/if}
+
+		{/foreach}
 	</div>
-	<div class="itdong-flex-item-100 itdong-align-self-stretch itdong-flex-5">
-		
-	</div>
+</div>
+<div class="itdong-flex-item-100 itdong-align-self-stretch itdong-flex-5">
+	<iframe scrolling="yes" src="__ROOT__/index.php/admin/index/test" name="iframe_a" width="100%" frameborder="0"></iframe>
+</div>
 </div>
 <!-- jquery js -->
 <script src="__ROOT__/static/js/jquery-3.3.1.js"></script>
 <!-- semantic js -->
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js"></script>
+<!-- customize js -->
+<script type="text/javascript">
+	$('.ui.accordion').accordion({
+		exclusive:true,
+		animateChildren:false,
+		closeNested:true,
+		duration:100,
+		selector:{}
+	});
+
+	$(document).ready(function(){
+
+		// 获取页面元素
+		var frame_a = document.getElementsByName("iframe_a")[0];
+
+		// submenu导航
+		$(".ui a").click(function(){
+
+			var changeUrl = $(this).attr("data-href") + "?requestNum=2";
+			frame_a.src = changeUrl;
+
+		});
+	});
+</script>
 </body>
 </html>

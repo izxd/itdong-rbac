@@ -118,4 +118,26 @@ class Index extends Controller
            $this->error('请输入角色名称再添加.'); 
         }
     }
+
+    /* 更新权限组规则 */
+    public function updateAuthGroupRule()
+    {
+        if($this->request->isPost()){
+            $post = $this->request->post();
+            if($post["id"] == 1){
+                $this->error("超级管理员信息无法编辑");
+            }
+
+            $group_data['id']    = $post['id'];
+
+            $group_data['rules'] = is_array($post['auth_rule_ids']) ? implode(",",$post['auth_rule_ids']) : "";
+            
+            if(Db::name("auth_group")->where("id",$post['id'])->update( $group_data) !== false){
+                $this->success('授权成功');
+            } else {
+                $this->error('授权失败');
+            }
+            
+        }
+    }
 }

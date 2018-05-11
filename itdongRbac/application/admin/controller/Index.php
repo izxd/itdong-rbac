@@ -61,6 +61,21 @@ class Index extends Controller
         }
     }
 
+    /* 获取规则数据 */
+    public function getJson()
+    {
+        $id = $this->request->post("id");
+        $auth_group_data = Db::name("auth_group")->find($id);
+        $auth_rules = explode(",",$auth_group_data["rules"]);
+        $auth_rule_list  = Db::name('auth_rule')->field('id,pid,title')->select();
+
+        foreach ($auth_rule_list as $key => $value) {
+            in_array($value['id'], $auth_rules) && $auth_rule_list[$key]['checked'] = true;
+        }
+
+        return $auth_rule_list;
+    }
+
     /* 删除角色 */
     public function delRole()
     {

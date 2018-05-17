@@ -15,7 +15,6 @@ class Index extends Controller
     	$menu = array2tree($auth_rule_list);
 
         $this->assign('menu', $menu);
-
         return $this->fetch();
     }
 
@@ -23,6 +22,99 @@ class Index extends Controller
     public function test()
     {
 		return $this->fetch();
+    }
+
+    /* 展示权限列表 */
+    public function showAuthority()
+    {
+        $auth = Db::name("auth_rule")
+        ->order(["sort" => "DESC", "id" => "ASC"])
+        ->select();
+
+        $auth = array2level($auth);
+        $this->assign("auth",$auth);
+        return $this->fetch();
+    }
+
+    /* 增加权限 */
+    function addAuth(){
+        $post = $this->request->post();
+        if(!empty($post["title"])){
+            $res = Db::name("auth_rule")
+            ->where("title",$post["title"])
+            ->find();
+
+            if(empty($res)){
+
+                if($post["sort"] <= 255){
+                    Db::name('auth_rule')
+                    ->insert(['title'=>$post["title"],
+                        'status'=>$post["status"],
+                        "name"=>$post["name"],
+                        "icon"=>$post["icon"],
+                        "sort"=>$post["sort"],
+                        "pid"=>$post["pid"],
+                        "type"=>1]);
+                    $this->success("添加成功");
+                }else{
+                    $this->error('序号请小于等于255');
+                }
+                
+            }else{
+                $this->error('系统中已存在该菜单.');
+            }
+
+        }else{
+            $this->error('请输入菜单名称.');
+        }
+    }
+
+    /* 编辑权限 */
+    function editAuth(){
+        $post = $this->request->post();
+
+        $id = $post["id"];
+        $name_menu = $post["title"];
+        $controller = $post["name"];
+        $icon = $post["icon"];
+        $radio_status = $post["status"];
+        $sort = $post["sort"];
+
+        if($id < 3){
+            $this->error("系统权限不能删除.");
+        }
+
+        if($sort <= 255){
+            Db::name('auth_rule')
+            ->where('id',$post["id"])
+            ->update(["title" => $post["title"],"name" => $post["name"],"icon" => $post["icon"],"status" => $post["status"],"sort" => $post["sort"]]);
+            
+            $this->success('success');
+        }else{
+            $this->error('请输入小于255的数字');
+        }
+    }
+
+    /* 删除权限 */
+    public function deleteAuth(){
+        $id = $this->request->post("id");
+        $juge = Db::name("auth_rule")
+            ->where("pid",$id)
+            ->find();
+        if($id<300){
+            $this->error("重要节点无法删除");
+        }
+        if(!empty($juge)){
+            $this->error("请先删除子权限");
+        }else{
+            if($id < 300){
+                $this->error("重要节点无法删除");
+            }else{
+                Db::name("auth_rule")
+                ->delete($id);
+                $this->success("success");
+            }
+        }
     }
 
     /* 展示角色列表列表 */

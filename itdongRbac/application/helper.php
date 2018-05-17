@@ -51,6 +51,26 @@ function array_child_append($parent,$pid, $child, $child_key_name)
 	return $parent;
 }
 
+/**
+* @brief 数组层级缩进转换
+* @param Array $array
+* @param int $pid
+* @param int $level
+* @return array
+*/ 
+function array2level($array, $pid = 0, $level = 1)
+{
+	static $list = [];
+	foreach ($array as $v) {
+		if($v["pid"] == $pid){
+			$v["level"] = $level;
+			$list[] = $v;
+			array2level($array, $v["id"], $level + 1);
+		}
+	}
+	return $list;
+}
+
 /*
 * @brief 构建层级（树状）数组
 * @param Array $array 处理的一维数组

@@ -26,11 +26,95 @@ class User extends Controller
 		return $this->fetch();
 	}
 
+	// 用户编辑 - 获取用户的角色
+	public function userAuth(){
+		$id = $this->request->post("id");
+
+		// 获取用户id和权限id的对应
+		$user_auth = Db::name("User")
+			->alias("a")
+			->join("auth_group_access b","b.uid=a.id","left")
+			->field("a.*,b.group_id")
+			->where("id",$id)
+			->find();
+
+		$this->success($user_auth);
+	}
+
+	// 用户添加
+	public function addUser()
+	{
+		$post = $this->request->post();
+		$this->success($post['group_id']);
+	}
+
 	// 用户编辑
 	public function editUser()
 	{
-		$id = $this->request->post("id");
-		$this->success($id);
+
+		$post = $this->request->post();
+
+		if($post["id"] == 1){
+			$this->error('超级管理员信息无法编辑');
+		}
+
+		// 检查数据库是否存在同名
+		if(!empty($post["username"]) || 
+			!empty($post["password"]) || 
+			!empty($post["email"])){
+			
+			$res = Db::name('user')
+                ->where("username",$post["username"])
+                ->find();
+            $resEmail = Db::name('user')
+            	->where("email",$post["email"])
+            	->find();
+
+            if(empty($res)){
+
+            	$usernameUpOk = Db::name("user")
+                    ->where("id",$post["id"])
+                    ->update(["username"=>$post["username"]]);
+
+                if($usernameUpOk){
+					$returnUsername = "用户名更新成功,";
+                }else{
+					$returnUsername = "用户名更新失败,";
+                }
+
+                $usernameUpOk = Db::name("user")
+                    ->where("id",$post["id"])
+                    ->update(["email"=>$post["email"]]);
+
+                if($usernameUpOk){
+					$returnUsername .= "邮箱更新成功,";
+                }else{
+					$returnUsername .= "邮箱更新失败,";
+                }
+
+                $this->success($returnUsername);
+            	
+            }else if(empty($resEmail)){
+
+            	$usernameUpOk = Db::name("user")
+                    ->where("id",$post["id"])
+                    ->update(["email"=>$post["email"]]);
+
+                if($usernameUpOk){
+					$returnUsername = "邮箱更新成功,";
+                }else{
+					$returnUsername = "邮箱更新失败,";
+                }
+
+                $this->success($returnUsername);
+            }else{
+            	$this->error('用户名重复.'); 
+            }
+
+		}else{
+			$this->error('请输入完整字段.'); 
+		}
+
 	}
 
 	// 删除用户

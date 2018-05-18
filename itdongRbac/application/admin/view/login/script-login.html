@@ -1,0 +1,35 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		var btnLogin = $("#login"),
+			username = $("#username"),
+			password = $("#password");
+
+		// 登录模块
+		btnLogin.click(function(){
+
+			$.ajax({
+				url:"login",
+				type:"POST",
+				dataType:"json",
+				data:{
+					title:$("#add_name_menu").val(),
+					name:$("#add_controller").val(),
+					icon:$("#add_icon").val(),
+					status:radio_status,
+					sort:$("#add_sort").val(),
+					pid:pid
+				},
+				success:function(result,status,xhr){
+					console.log(result);
+					location.reload();
+				},
+				error:function(xhr,status,error){
+					console.log("出错了.");
+				}
+			})
+
+		});
+
+	});
+</script>

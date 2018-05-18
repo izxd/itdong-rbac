@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- semantic css -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="__ROOT__/static/css/itdong-flex.css?ver=<?php echo time();?>">
+</head>
+<body>
+	<style type="text/css">
+	.bg-ff0000{
+		background: #ff0000;
+	}
+	.bg-00ff00{
+		background: #00ff00;
+	}
+</style>
+<div class="itdong-flex-container
+itdong-flex-direction-row
+itdong-justify-content-flex-start
+itdong-align-items-flex-start
+itdong-flex-wrap-nowrap
+itdong-align-content-stretch">
+<div class="itdong-flex-item-100 itdong-align-self-stretch itdong-flex-1" style="overflow-y: scroll;">
+		<div class="ui vertical styled accordion menu">
+			{foreach name="menu" item="vo"}
+				{if condition="isset($vo['children'])"}
+					<div class="title"><i class="dropdown icon"></i>{$vo.title}</div>
+					<div class="content">
+						<div class="accordion">
+							{foreach name="$vo['children']" item="v"}
+								{if condition="isset($v['children'])"}
+									<div class="title"><i class="dropdown icon"></i>{$v.title}</div>
+									<div class="content">
+										<div class="accordion">
+											{foreach name="$v['children']" item="vs"}
+												<div class="title">{$vs.title}</div>
+												<div class="content"></div>
+											{/foreach}
+										</div>
+									</div>
+								{else /}
+									<div class="title">{$v.title}</div>
+									<div class="content">{$v.title}</div>
+								{/if}
+							{/foreach}
+						</div>
+					</div>
+				{else /}
+					<div class="title"><i class="folder outline icon"></i>{$vo.title}</div>
+					<div class="content"></div>
+				{/if}
+			
+			{/foreach}
+		</div>
+	</div>
+	<div class="itdong-flex-item-100 itdong-align-self-stretch itdong-flex-5">
+		
+	</div>
+</div>
+<!-- jquery js -->
+<script src="__ROOT__/static/js/jquery-3.3.1.js"></script>
+<!-- semantic js -->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js"></script>
+<!-- customize js -->
+<script type="text/javascript">
+	$('.ui.accordion').accordion({
+		exclusive:true,
+		animateChildren:false,
+		closeNested:true,
+		duration:100,
+		selector:{}
+	});
+</script>
+</body>
+</html>

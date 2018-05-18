@@ -14583,3 +14583,39 @@
 [ sql ] [ SQL ] SELECT * FROM `sm_user` ORDER BY `id` ASC [ RunTime:0.000315s ]
 [ sql ] [ SQL ] SHOW COLUMNS FROM `sm_auth_group` [ RunTime:0.000636s ]
 [ sql ] [ SQL ] SELECT `id`,`title` FROM `sm_auth_group` ORDER BY `id` DESC [ RunTime:0.000230s ]
+---------------------------------------------------------------
+[ 2018-05-17T18:26:50+08:00 ] 127.0.0.1 GET /index.php/admin/index/showAuthority?requestNum=2
+[ info ] 127.0.0.1:8058/index.php/admin/index/showAuthority?requestNum=2 [运行时间：0.035319s][吞吐率：28.31req/s] [内存消耗：2,737.32kb] [文件加载：50]
+[ info ] [ LANG ] D:\wamp64\www\itdongRbac\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'showAuthority',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '127.0.0.1:8058',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://127.0.0.1:8058/admin/index',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'PHPSESSID=2a6hp160s2pc9iq6topr00f2qj',
+)
+[ info ] [ PARAM ] array (
+  'requestNum' => '2',
+)
+[ info ] [ RUN ] app\admin\controller\Index->showAuthority[ D:\wamp64\www\itdongRbac\application\admin\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp64\www\itdongRbac\public/../application/admin\view\index\show_authority.html [ array (
+  0 => 'auth',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001235s ] mysql:host=127.0.0.1;dbname=cmf_database;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_auth_rule` [ RunTime:0.001002s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_auth_rule` ORDER BY `sort` DESC,`id` ASC [ RunTime:0.000342s ]

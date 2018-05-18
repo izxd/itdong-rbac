@@ -2,3 +2,7 @@
 .padding-15{
 	padding: 15px;
 }
+/* login.html */
+body .grid{
+	height: 100%;
+}

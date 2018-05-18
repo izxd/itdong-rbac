@@ -1,0 +1,27 @@
+{include file="login/header" /}
+
+<div class="ui middle aligned container grid">
+	<div class="four wide column"></div>
+	<div class="eight wide column">
+		<h2 class="ui header">
+			<i class="plug icon"></i>
+			<div class="content">透传云</div>
+		</h2>
+		<div class="ui form">
+			<div class="field">
+				<label>用户名</label>
+				<input type="text" id="username" name="username" placeholder="请输入用户名/邮箱/手机号">
+			</div>
+			<div class="field">
+				<label>密码</label>
+				<input type="password" id="password" name="password" placeholder="请输入密码">
+			</div>
+			<button id="login" class="ui button" type="button">登录</button>
+		</div>
+	</div>
+	<div class="four wide column"></div>
+</div>
+
+{include file="login/script" /}
+{include file="login/script-login" /}
+{include file="login/footer" /}

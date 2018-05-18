@@ -192,9 +192,11 @@ class Index extends Controller
 
         // 检查数据库是否存在同名
         if(!empty($post["title"])){
+            
             $res = Db::name('auth_group')
                 ->where("title",$post["title"])
                 ->find();
+
             if(empty($res)){
                 Db::name("auth_group")
                     ->where("id",$post["id"])
@@ -206,6 +208,7 @@ class Index extends Controller
                     ->update(['status'=>$post['radio_status']]);
                 $this->success('状态更新成功.');
             }
+
         }else{
            $this->error('请输入角色名称再添加.'); 
         }

@@ -1,0 +1,249 @@
+---------------------------------------------------------------
+[ 2018-05-15T14:58:06+08:00 ] 127.0.0.1 GET /
+[ info ] 127.0.0.1:8058/ [运行时间：0.513821s][吞吐率：1.95req/s] [内存消耗：1,775.67kb] [文件加载：41]
+[ info ] [ LANG ] D:\wamp64\www\itdongRbac\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '127.0.0.1:8058',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\wamp64\www\itdongRbac\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp64\www\itdongRbac\public/../application/index\view\index\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-05-15T14:58:08+08:00 ] 127.0.0.1 GET /admin/index
+[ info ] 127.0.0.1:8058/admin/index [运行时间：0.189176s][吞吐率：5.29req/s] [内存消耗：2,727.27kb] [文件加载：50]
+[ info ] [ LANG ] D:\wamp64\www\itdongRbac\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '127.0.0.1:8058',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://127.0.0.1:8058/',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp64\www\itdongRbac\application\admin\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp64\www\itdongRbac\public/../application/admin\view\index\index.html [ array (
+  0 => 'menu',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003534s ] mysql:host=127.0.0.1;dbname=cmf_database;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_auth_rule` [ RunTime:0.002804s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_auth_rule` WHERE  `status` = 1 ORDER BY `id` ASC [ RunTime:0.000671s ]
+---------------------------------------------------------------
+[ 2018-05-15T14:58:08+08:00 ] 127.0.0.1 GET /admin/index/showRole
+[ info ] 127.0.0.1:8058/admin/index/showRole [运行时间：0.050043s][吞吐率：19.98req/s] [内存消耗：2,709.82kb] [文件加载：50]
+[ info ] [ LANG ] D:\wamp64\www\itdongRbac\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'showRole',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '127.0.0.1:8058',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://127.0.0.1:8058/admin/index',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->showRole[ D:\wamp64\www\itdongRbac\application\admin\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp64\www\itdongRbac\public/../application/admin\view\index\show_role.html [ array (
+  0 => 'role',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001004s ] mysql:host=127.0.0.1;dbname=cmf_database;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_auth_group` [ RunTime:0.001103s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_auth_group` ORDER BY `id` DESC [ RunTime:0.000340s ]
+---------------------------------------------------------------
+[ 2018-05-15T14:58:11+08:00 ] 127.0.0.1 GET /index.php/admin/user/userlist?requestNum=2
+[ info ] 127.0.0.1:8058/index.php/admin/user/userlist?requestNum=2 [运行时间：0.085372s][吞吐率：11.71req/s] [内存消耗：1,465.27kb] [文件加载：39]
+[ info ] [ LANG ] D:\wamp64\www\itdongRbac\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'user',
+    2 => 'userlist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '127.0.0.1:8058',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://127.0.0.1:8058/admin/index',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+)
+[ info ] [ PARAM ] array (
+  'requestNum' => '2',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-05-15T14:58:13+08:00 ] 127.0.0.1 GET /index.php/admin/index/showRole?requestNum=2
+[ info ] 127.0.0.1:8058/index.php/admin/index/showRole?requestNum=2 [运行时间：0.035298s][吞吐率：28.33req/s] [内存消耗：2,710.20kb] [文件加载：50]
+[ info ] [ LANG ] D:\wamp64\www\itdongRbac\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'showRole',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '127.0.0.1:8058',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://127.0.0.1:8058/admin/index',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+)
+[ info ] [ PARAM ] array (
+  'requestNum' => '2',
+)
+[ info ] [ RUN ] app\admin\controller\Index->showRole[ D:\wamp64\www\itdongRbac\application\admin\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\wamp64\www\itdongRbac\public/../application/admin\view\index\show_role.html [ array (
+  0 => 'role',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009755s ] mysql:host=127.0.0.1;dbname=cmf_database;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_auth_group` [ RunTime:0.001023s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_auth_group` ORDER BY `id` DESC [ RunTime:0.000401s ]
+---------------------------------------------------------------
+[ 2018-05-15T14:58:18+08:00 ] 127.0.0.1 POST /index.php/admin/index/getJson
+[ info ] 127.0.0.1:8058/index.php/admin/index/getJson [运行时间：0.051989s][吞吐率：19.23req/s] [内存消耗：2,716.48kb] [文件加载：50]
+[ info ] [ LANG ] D:\wamp64\www\itdongRbac\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'getJson',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '127.0.0.1:8058',
+  'connection' => 'keep-alive',
+  'content-length' => '6',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://127.0.0.1:8058',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://127.0.0.1:8058/index.php/admin/index/showRole?requestNum=2',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+)
+[ info ] [ PARAM ] array (
+  'id' => '180',
+)
+[ info ] [ RUN ] app\admin\controller\Index->getJson[ D:\wamp64\www\itdongRbac\application\admin\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001506s ] mysql:host=127.0.0.1;dbname=cmf_database;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_auth_group` [ RunTime:0.001198s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_auth_group` WHERE  `id` = 180 LIMIT 1 [ RunTime:0.000593s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_auth_rule` [ RunTime:0.000995s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`title` FROM `sm_auth_rule` [ RunTime:0.000308s ]
+---------------------------------------------------------------
+[ 2018-05-15T14:58:28+08:00 ] 127.0.0.1 GET /index.php/admin/api/app_list?requestNum=2
+[ info ] 127.0.0.1:8058/index.php/admin/api/app_list?requestNum=2 [运行时间：0.018119s][吞吐率：55.19req/s] [内存消耗：1,465.27kb] [文件加载：39]
+[ info ] [ LANG ] D:\wamp64\www\itdongRbac\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'api',
+    2 => 'app_list',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '127.0.0.1:8058',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://127.0.0.1:8058/admin/index',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+)
+[ info ] [ PARAM ] array (
+  'requestNum' => '2',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-05-15T14:58:29+08:00 ] 127.0.0.1 GET /index.php/asdasd?requestNum=2
+[ info ] 127.0.0.1:8058/index.php/asdasd?requestNum=2 [运行时间：0.016017s][吞吐率：62.43req/s] [内存消耗：1,462.05kb] [文件加载：36]
+[ info ] [ LANG ] D:\wamp64\www\itdongRbac\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'asdasd',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '127.0.0.1:8058',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://127.0.0.1:8058/admin/index',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+)
+[ info ] [ PARAM ] array (
+  'requestNum' => '2',
+)
+[ info ] [ LOG ] INIT File
